@@ -61,7 +61,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.FETCH_ORDER_SUCCESS:
       return fetchOrderSuccess(state, action);
 
-    case actionTypes.PURCHASE_BURGER_FAIL:
+    case actionTypes.FETCH_ORDER_FAIL:
       return fetchOrderFail(state, action);
 
     default:
