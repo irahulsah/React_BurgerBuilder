@@ -9,19 +9,18 @@ const sideDrawer = props => {
   let attachedClass = [classes.SideDrawer, classes.Close];
   if (props.open) {
     attachedClass = [classes.SideDrawer, classes.Open];
-    // console.log("this is", attachedClass);
-    // console.log("it is ", attachedClass.join(" "));
+ 
   }
 
   return (
     <Aux>
       <BackDrop show={props.open} clicked={props.closed} />
-      <div className={attachedClass.join(' ')}>
+      <div className={attachedClass.join(" ")} onClick={props.closed}>
         <div className={classes.Logo}>
           <Logo />
         </div>
         <nav>
-          <NavigationItems />
+          <NavigationItems isAuthenticated={props.isAuth} />
         </nav>
       </div>
     </Aux>

@@ -1,17 +1,16 @@
 import React, { Component } from "react";
 import Order from "../../components/Order/Order";
-import axios from "../../axios.orders";
-import withErrorHandler from "../../HigherOrderComponent/withErrorHandler/withErrorHandler";
 import * as actions from "../../store/actions/index";
 import { connect } from "react-redux";
 import Spinner from "../../components/Ui/Spinner/Spinner";
+import withErrorHandler from "../../HigherOrderComponent/withErrorHandler/withErrorHandler";
+import axios from "../../axios.orders";
 
 class Orders extends Component {
-  // constructor(props) {
-  //   super(props);
+  constructor(props) {
+    super(props);
 
-  componentDidMount() {
-    this.props.onFetchedOrder();
+    this.props.onFetchedOrder(this.props.token, this.props.userId);
   }
   render() {
     let orders = <Spinner />;
@@ -25,22 +24,23 @@ class Orders extends Component {
       ));
     }
 
-    return <div>
-      {orders}
-    </div>;
+    return <div>{orders}</div>;
   }
 }
 
 const mapPropsToProps = state => {
   return {
     orders: state.order.orders,
-    loading: state.order.loading
+    loading: state.order.loading,
+    token: state.auth.token,
+    userId: state.auth.userId
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onFetchedOrder: () => dispatch(actions.fetchOrders())
+    onFetchedOrder: (token, userId) =>
+      dispatch(actions.fetchOrders(token, userId))
   };
 };
 

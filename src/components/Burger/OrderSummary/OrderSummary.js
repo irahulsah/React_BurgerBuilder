@@ -3,9 +3,7 @@ import Aux from "../../../HigherOrderComponent/Auxillary/Auxillary";
 import Button from "../../Ui/Button/Button";
 
 class OrderSummary extends Component {
-  // componentWillUpdate(){
-  //   console.log('[OrderSumaary.js] will update')
-  // }
+
   render() {
     let ingrediantSummary = Object.keys(this.props.ingrediants).map(igKey => {
       return (
