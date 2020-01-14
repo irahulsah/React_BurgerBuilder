@@ -12,7 +12,7 @@ import axios from "../../axios.orders";
 
 import * as actions from '../../store/actions/index';
 
-class burgerBuilder extends Component {
+export class BurgerBuilder extends Component {
   constructor(props) {
     super(props);
     this.props.onInitIngrediants();
@@ -205,4 +205,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(WithErrorHandler(burgerBuilder, axios));
+)(WithErrorHandler(BurgerBuilder, axios));
