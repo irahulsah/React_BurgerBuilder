@@ -13,7 +13,11 @@ class Orders extends Component {
     this.props.onFetchedOrder(this.props.token, this.props.userId);
   }
   render() {
-    let orders = <Spinner />;
+    let orders = this.props.error ? (
+      <p style={{ textAlign: "center" }}>Newtowk Error..Ooops!!! can't be loaded!! </p>
+    ) : (
+      <Spinner />
+    );
     if (!this.props.loading) {
       orders = this.props.orders.map(order => (
         <Order
@@ -33,7 +37,8 @@ const mapPropsToProps = state => {
     orders: state.order.orders,
     loading: state.order.loading,
     token: state.auth.token,
-    userId: state.auth.userId
+    userId: state.auth.userId,
+    error: state.auth.error
   };
 };
 
